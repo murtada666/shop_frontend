@@ -15,7 +15,7 @@ class UserProfile extends StatelessWidget {
   final TextEditingController fullName = TextEditingController();
 
   final TextEditingController phoneNumber = TextEditingController();
-
+  final TextEditingController phonooeNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
