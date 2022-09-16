@@ -20,6 +20,7 @@ class _AllScreenState extends State<AllScreen> {
   int selectItem = 0;
   List<Widget> allPages = [
     HomePage(),
+
     Cart(),
     Favorites(),
     UserProfile(),
