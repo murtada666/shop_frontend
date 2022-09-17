@@ -15,7 +15,6 @@ class UserProfile extends StatelessWidget {
   final TextEditingController fullName = TextEditingController();
 
   final TextEditingController phoneNumber = TextEditingController();
-  final TextEditingController phonooeNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class UserProfile extends StatelessWidget {
             elevation: 0,
             title: TitleName(title: 'الملف الشخصي'),
           ),
-          body: (Database.prefs.getString('email')!.isNotEmpty)
+          body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(children: [
@@ -117,7 +116,8 @@ class UserProfile extends StatelessWidget {
                                                         .getString('password')!,
                                                     Database.prefs
                                                         .getString('fullName')!,
-                                                    phoneNumber.text,
+                                                    Database.prefs.getString(
+                                                        'phoneNumber')!,
                                                   );
                                                 },
                                                 child: Container(

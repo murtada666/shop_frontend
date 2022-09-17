@@ -26,48 +26,68 @@ class Favorites extends StatelessWidget {
           titleSpacing: 20,
           title: TitleName(title: 'المفضلة'),
         ),
-        body: (Database.prefs.getString('email')!.isNotEmpty)
-            ? Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    // ------------------------------- List the product ---------------------------------
-                    Expanded(
-                      child: Obx(() {
-                        return ListView(
+        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+            ? Obx(() {
+                return (FavoriteModule.favorites.isEmpty == false)
+                    ? Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Wrap(
-                              alignment: WrapAlignment.center,
-                              children: FavoriteModule.favorites
-                                  .map((e) => GestureDetector(
-                                      onTap: () {
-                                        Get.to(Details(
-                                          product: e.product,
-                                        ));
-                                        e.product.isEdit.value = false;
-                                      },
-                                      child: BuildItem(
-                                        imageUrl: e.imageProduct.value,
-                                        nameProduct: e.nameProduct.value,
-                                        categoryProduct:
-                                            e.categoryProduct.value,
-                                        price: e.priceProduct.value,
-                                        product: e.product,
-                                      )))
-                                  .toList(),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            // ------------------------------- List the product ---------------------------------
+                            Expanded(
+                              child: Obx(() {
+                                return ListView(
+                                  children: [
+                                    Wrap(
+                                      alignment: WrapAlignment.center,
+                                      children: FavoriteModule.favorites
+                                          .map((e) => GestureDetector(
+                                              onTap: () {
+                                                Get.to(Details(
+                                                  product: e.product,
+                                                ));
+                                                e.product.isEdit.value = false;
+                                              },
+                                              child: BuildItem(
+                                                imageUrl: e.imageProduct.value,
+                                                nameProduct: e.nameProduct.value,
+                                                categoryProduct:
+                                                    e.categoryProduct.value,
+                                                price: e.priceProduct.value,
+                                                product: e.product,
+                                              )))
+                                          .toList(),
+                                    )
+                                  ],
+                                );
+                              }),
                             )
                           ],
-                        );
-                      }),
-                    )
-                  ],
-                ),
-              )
+                        ),
+                      )
+                    : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.favorite_border,
+                              color: Colors.grey,
+                              size: 100,
+                            ),
+                            Text(
+                              'لايوجد منتجات في المفضلة',
+                              style: TextStyle(color: Colors.grey, fontSize: 30),
+                            )
+                          ],
+                        ),
+                      );
+              }
+            )
             : Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -90,7 +110,9 @@ class Favorites extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       ContainerDesgin(
                         color: greenColor,
                         child: TextButton(

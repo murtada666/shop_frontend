@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stop_and_shop/Screens/SetLocation/set_location.dart';
 import 'package:stop_and_shop/Screens/CheckScreens/contents.dart';
 import 'package:stop_and_shop/modules/module_location.dart';
 import '../../shared/components/components.dart';
@@ -64,32 +63,11 @@ class Locations extends StatelessWidget {
               })),
               Expanded(
                   child: Column(
-
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     "__________________________ او  ________________________",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    width: 200,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(130)),
-                    child: TextButton(
-                        onPressed: () {
-                          Get.to(const SetLocation());
-                        },
-                        child: const Text("اضف موقع من الخريطة",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18))),
                   ),
                   const SizedBox(
                     height: 50,
@@ -169,7 +147,7 @@ class Locations extends StatelessWidget {
                               });
                         },
                         child: const Text(
-                          "اضف الموقع يدويا",
+                          "اضف الموقع جديد",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

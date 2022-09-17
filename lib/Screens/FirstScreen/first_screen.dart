@@ -130,7 +130,7 @@ class _FirstScreenState extends State<FirstScreen> {
                   TextButton(
                     onPressed: () {
                       Get.to(const AllScreen());
-                      Database.prefs.setString('email', '');
+                      Database.prefs.setString('phoneNumber', '');
                     },
                     child: const Text(
                       'تخطي الان',
