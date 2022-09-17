@@ -10,11 +10,17 @@ import '../CheckScreens/contents.dart';
 import '../CheckScreens/login.dart';
 import '../CheckScreens/register.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
   UserProfile({Key? key}) : super(key: key);
-  final TextEditingController fullName = TextEditingController();
 
-  final TextEditingController phoneNumber = TextEditingController();
+  @override
+  State<UserProfile> createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+  final TextEditingController fullName = TextEditingController(text: Database.prefs.getString('fullName'));
+  final TextEditingController email = TextEditingController(text: Database.prefs.getString('email'));
+  final TextEditingController phoneNumber = TextEditingController(text: Database.prefs.getString('phoneNumber'));
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,8 @@ class UserProfile extends StatelessWidget {
             elevation: 0,
             title: TitleName(title: 'الملف الشخصي'),
           ),
-          body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+          body: (Database.prefs.getString('phoneNumber')!.isNotEmpty ||
+                  Database.prefs.getString('email')!.isNotEmpty)
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(children: [
@@ -86,7 +93,7 @@ class UserProfile extends StatelessWidget {
                                       child: AlertDialog(
                                         title: const Text('تعديل معلوماتي'),
                                         content: SizedBox(
-                                          height: 200,
+                                          height: 250,
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -104,21 +111,29 @@ class UserProfile extends StatelessWidget {
                                               ContainerDesgin(
                                                 color: Colors.white,
                                                 child: MyTextField(
+                                                  label: 'البريد الالكتروني',
+                                                  controller: email,
+                                                ),
+                                              ),
+                                              ContainerDesgin(
+                                                color: Colors.white,
+                                                child: MyTextField(
                                                     label: 'رقم الهاتف',
                                                     controller: phoneNumber),
                                               ),
                                               TextButton(
                                                 onPressed: () {
                                                   User.update(
-                                                    Database.prefs
-                                                        .getString('email')!,
+                                                    email.text,
                                                     Database.prefs
                                                         .getString('password')!,
-                                                    Database.prefs
-                                                        .getString('fullName')!,
-                                                    Database.prefs.getString(
-                                                        'phoneNumber')!,
+                                                    fullName.text,
+                                                    phoneNumber.text,
                                                   );
+                                                  setState(() {
+
+                                                  });
+                                                  Get.back();
                                                 },
                                                 child: Container(
                                                   padding: const EdgeInsets

@@ -148,6 +148,7 @@ class Details extends StatelessWidget {
                                         onPressed: () {
                                           product.weightProduct.value += 0.5;
                                         },
+                                        heroTag: 'btn1',
                                         backgroundColor: greenColor,
                                         mini: true,
                                         child: const Icon(Icons.add)),
@@ -161,6 +162,7 @@ class Details extends StatelessWidget {
                                         onPressed: () {
                                           product.weightProduct.value -= 0.5;
                                         },
+                                        heroTag: 'btn2',
                                         backgroundColor: Colors.grey,
                                         mini: true,
                                         child: const Icon(Icons.remove)),

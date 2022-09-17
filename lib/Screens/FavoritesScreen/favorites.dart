@@ -26,7 +26,8 @@ class Favorites extends StatelessWidget {
           titleSpacing: 20,
           title: TitleName(title: 'المفضلة'),
         ),
-        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty ||
+                Database.prefs.getString('email')!.isNotEmpty)
             ? Obx(() {
                 return (FavoriteModule.favorites.isEmpty == false)
                     ? Container(
@@ -55,7 +56,8 @@ class Favorites extends StatelessWidget {
                                               },
                                               child: BuildItem(
                                                 imageUrl: e.imageProduct.value,
-                                                nameProduct: e.nameProduct.value,
+                                                nameProduct:
+                                                    e.nameProduct.value,
                                                 categoryProduct:
                                                     e.categoryProduct.value,
                                                 price: e.priceProduct.value,
@@ -81,13 +83,13 @@ class Favorites extends StatelessWidget {
                             ),
                             Text(
                               'لايوجد منتجات في المفضلة',
-                              style: TextStyle(color: Colors.grey, fontSize: 30),
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 30),
                             )
                           ],
                         ),
                       );
-              }
-            )
+              })
             : Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
