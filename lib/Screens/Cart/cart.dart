@@ -46,7 +46,8 @@ class Cart extends StatelessWidget {
                 ]
               : null,
         ),
-        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty ||
+                Database.prefs.getString('email')!.isNotEmpty)
             ? Obx(() {
                 return (CartModule.products.isEmpty == false)
                     ? Container(
