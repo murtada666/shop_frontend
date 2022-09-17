@@ -14,10 +14,10 @@ class Loading extends StatelessWidget {
   login() async {
     await Future.delayed(const Duration(seconds: 2));
     try{
-      String? email = Database.prefs.getString('email');
+      String? phoneNumber = Database.prefs.getString('phoneNumber');
       String? password = Database.prefs.getString('password');
-      if(email != null && password != null){
-        AuthService.signIn(email: email, password: password);
+      if(phoneNumber != null && password != null){
+        AuthService.signIn(phoneNumber: phoneNumber, password: password);
       }else{
         Get.offAll(SplashScreen());
       }

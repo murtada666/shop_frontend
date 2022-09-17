@@ -13,7 +13,6 @@ import 'package:stop_and_shop/Services/local_database/shared_preferences.dart';
 class Cart extends StatelessWidget {
   Cart({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -24,7 +23,7 @@ class Cart extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           title: TitleName(title: 'سلتي'),
-          actions: (Database.prefs.getString('email')!.isNotEmpty)
+          actions: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
               ? [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -47,41 +46,58 @@ class Cart extends StatelessWidget {
                 ]
               : null,
         ),
-        body: (Database.prefs.getString('email')!.isNotEmpty)
-            ? Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    // ------------------------------- List the product ---------------------------------
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          Obx(() {
-                            return ListView(
-                              children: CartModule.products
-                                  .map(
-                                    (e) => BuildCartItem(
-                                      product: e.product,
-                                      nameProduct: e.nameProduct.value,
-                                      weightProduct: e.weightProduct.value,
-                                      imageUrl: e.imageProduct.value,
-                                      price: e.priceProduct.value,
-                                    ),
-                                  )
-                                  .toList(),
-                            );
-                          }),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+        body: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+            ? Obx(() {
+                return (CartModule.products.isEmpty == false)
+                    ? Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            // ------------------------------- List the product ---------------------------------
+                            Expanded(
+                              child: Stack(
+                                children: [
+                                  Obx(() {
+                                    return ListView(
+                                      children: CartModule.products
+                                          .map(
+                                            (e) => BuildCartItem(
+                                              product: e.product,
+                                              nameProduct: e.nameProduct.value,
+                                              weightProduct: e.weightProduct.value,
+                                              imageUrl: e.imageProduct.value,
+                                              price: e.priceProduct.value,
+                                            ),
+                                          )
+                                          .toList(),
+                                    );
+                                  }),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.shopping_cart_outlined,
+                              color: Colors.grey,
+                              size: 100,
+                            ),
+                            Text('لايوجد منتجات في سلتي',style: TextStyle(color: Colors.grey,fontSize: 30),)
+                          ],
+                        ),
+                      );
+              }
+            )
             : Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),

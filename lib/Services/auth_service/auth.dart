@@ -1,4 +1,3 @@
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
@@ -7,19 +6,17 @@ import 'package:stop_and_shop/Screens/FirstScreen/first_screen.dart';
 import '../../Screens/CheckScreens/login.dart';
 import '../local_database/shared_preferences.dart';
 
-
-class AuthService{
+class AuthService {
   static RxBool isBusy = false.obs;
 
-  static signIn({required String email, required String password}) async {
+  static signIn({required String phoneNumber, required String password}) async {
     isBusy.value = true;
     FocusScope.of(Get.context!).unfocus();
-    try{
-      Database.prefs.setString('email', email);
+    try {
+      Database.prefs.setString('phoneNumber', phoneNumber);
       Database.prefs.setString('password', password);
       Get.offAll(const AllScreen());
-    }
-    catch (e){
+    } catch (e) {
       Get.showSnackbar(GetSnackBar(
         title: 'خطأ',
         message: e.toString().substring(0, min(30, e.toString().length)),
@@ -29,17 +26,20 @@ class AuthService{
     isBusy.value = false;
   }
 
-
-  static signUp({required String fullName,required String email, required String password}) async {
+  static signUp(
+      {required String fullName,
+      String? email,
+      required String password,
+      required String phoneNumber}) async {
     isBusy.value = true;
     FocusScope.of(Get.context!).unfocus();
-    try{
+    try {
+      Database.prefs.setString('phoneNumber', phoneNumber);
       Database.prefs.setString('fullName', fullName);
-      Database.prefs.setString('email', email);
+      Database.prefs.setString('email', email!);
       Database.prefs.setString('password', password);
       Get.offAll(const AllScreen());
-    }
-    catch (e){
+    } catch (e) {
       Get.showSnackbar(GetSnackBar(
         title: 'خطأ',
         message: e.toString().substring(0, min(30, e.toString().length)),
@@ -49,7 +49,7 @@ class AuthService{
     isBusy.value = false;
   }
 
-  static signOut(){
+  static signOut() {
     Database.prefs.remove('email');
     Database.prefs.remove('password');
     Get.offAll(const FirstScreen());
