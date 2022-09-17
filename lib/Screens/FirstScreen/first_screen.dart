@@ -82,10 +82,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   const Text(
-                      '__________________ او سجل دخول باستخدام __________________'),
+                      ' او سجل دخول باستخدام '),
+                  const Divider(color: Colors.black,),
                   const SizedBox(
                     height: 30,
                   ),

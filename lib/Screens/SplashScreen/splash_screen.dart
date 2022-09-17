@@ -28,8 +28,8 @@ class SplashScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Image.asset(
                     'assets/images/img_logo.png',
-                    width: 300,
-                    height: 300,
+                    width: 220,
+                    height: 250,
                   ),
                 ),
                 backgroundColor: const Color.fromRGBO(0, 128, 0, 0),

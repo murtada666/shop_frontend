@@ -66,7 +66,7 @@ class Locations extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "__________________________ او  ________________________",
+                    "_____________________ او  ___________________",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   const SizedBox(
@@ -111,6 +111,7 @@ class Locations extends StatelessWidget {
                                         onPressed: () {
                                           LocationModule.add(
                                               nameLocation.text, location.text);
+                                          Get.back();
                                         },
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
