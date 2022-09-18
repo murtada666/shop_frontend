@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:stop_and_shop/Screens/LoadingScreen/loading_screen.dart';
+import 'package:stop_and_shop/Screens/SplashScreen/splash_screen.dart';
 import 'package:stop_and_shop/Services/local_database/shared_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stop_and_shop/modules/module_product.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Loading(),
+      home: SplashScreen(),
 
     );
   }

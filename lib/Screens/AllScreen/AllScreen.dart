@@ -44,8 +44,8 @@ class _AllScreenState extends State<AllScreen> {
               color: whiteColor,
               activeColor: blackColor,
               tabBackgroundColor: const Color.fromRGBO(0, 128, 0, 100),
-              padding: const EdgeInsets.all(16),
-              gap: 8,
+              padding: const EdgeInsets.only(top: 16 , bottom: 16),
+              gap: 0,
               selectedIndex: selectItem,
               onTabChange: (index) {
                 selectItem = index;

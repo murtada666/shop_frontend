@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_and_shop/Screens/Categories/categories.dart';
 import 'package:stop_and_shop/Screens/HomeScreen/search.dart';
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.rtl, 
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(

@@ -19,10 +19,10 @@ class Loading extends StatelessWidget {
       if(phoneNumber != null && password != null){
         AuthService.signIn(phoneNumber: phoneNumber, password: password);
       }else{
-        Get.offAll(SplashScreen());
+        Get.offAll(FirstScreen());
       }
     }catch (e){
-      Get.offAll(SplashScreen());
+      Get.offAll(FirstScreen());
     }
   }
 
