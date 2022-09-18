@@ -160,7 +160,11 @@ class Details extends StatelessWidget {
                                     ),
                                     FloatingActionButton(
                                         onPressed: () {
-                                          product.weightProduct.value -= 0.5;
+                                          (product.weightProduct.value <= 0.5)
+                                              ? product.weightProduct.value =
+                                                  0.5
+                                              : product.weightProduct.value -=
+                                                  0.5;
                                         },
                                         heroTag: 'btn2',
                                         backgroundColor: Colors.grey,
