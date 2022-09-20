@@ -18,9 +18,12 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  final TextEditingController fullName = TextEditingController(text: Database.prefs.getString('fullName'));
-  final TextEditingController email = TextEditingController(text: Database.prefs.getString('email'));
-  final TextEditingController phoneNumber = TextEditingController(text: Database.prefs.getString('phoneNumber'));
+  final TextEditingController fullName =
+      TextEditingController(text: Database.prefs.getString('fullName'));
+  final TextEditingController email =
+      TextEditingController(text: Database.prefs.getString('email'));
+  final TextEditingController phoneNumber =
+      TextEditingController(text: Database.prefs.getString('phoneNumber'));
 
   @override
   Widget build(BuildContext context) {
@@ -123,16 +126,11 @@ class _UserProfileState extends State<UserProfile> {
                                               ),
                                               TextButton(
                                                 onPressed: () {
-                                                  User.update(
-                                                    email.text,
-                                                    Database.prefs
-                                                        .getString('password')!,
-                                                    fullName.text,
-                                                    phoneNumber.text,
-                                                  );
-                                                  setState(() {
+                                                  Database.prefs.setString('fullName', fullName.text);
+                                                  Database.prefs.setString('email', email.text);
+                                                  Database.prefs.setString('phoneNumber', phoneNumber.text);
 
-                                                  });
+                                                  setState(() {});
                                                   Get.back();
                                                 },
                                                 child: Container(

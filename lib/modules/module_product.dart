@@ -1,4 +1,8 @@
-import 'package:get/get.dart';
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart' hide Response;
 
 class Product {
   final RxString nameProduct;
@@ -41,6 +45,38 @@ class Product {
   }
 
   static RxString search = ''.obs;
+
+  Map<String, dynamic> toJson() => {
+        'name': nameProduct.value,
+        'image': imageProduct.value,
+        'description': descriptionProduct.value,
+        'category': categoryProduct.value,
+        'price': priceProduct.value,
+      };
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+        nameProduct: json['name'],
+        imageProduct: json['image'],
+        descriptionProduct: json['description'],
+        categoryProduct: json['category'],
+        priceProduct: json['price'],
+      );
+
+  static Future<void> getProducts() async {
+    try {
+      Response res =
+          await Dio().get('http://10.0.2.2:8000/api/product/all_products');
+
+      if (res.statusCode == 200) {
+        for (var e in (res.data as List)) {
+          print(e);
+          products.add(Product.fromJson(e));
+        }
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
   static RxList<Product> products = <Product>[
     Product(
