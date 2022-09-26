@@ -23,7 +23,7 @@ class Categories extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Text(
-            category.nameCategory,
+            category.name,
             style: const TextStyle(
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
           ),
@@ -51,9 +51,7 @@ class Categories extends StatelessWidget {
               Expanded(
                 child: Obx(() {
                   return (Product.products
-                              .where((e) =>
-                                  e.categoryProduct.value ==
-                                  category.nameCategory)
+                              .where((e) => e.category.value == category.name)
                               .isEmpty ==
                           false)
                       ? ListView(
@@ -63,8 +61,7 @@ class Categories extends StatelessWidget {
                                     alignment: WrapAlignment.center,
                                     children: Product.products
                                         .where((e) =>
-                                            e.categoryProduct.value ==
-                                            category.nameCategory)
+                                            e.category.value == category.name)
                                         .map((e) => GestureDetector(
                                             onTap: () {
                                               Get.to(Details(
@@ -72,11 +69,10 @@ class Categories extends StatelessWidget {
                                               ));
                                             },
                                             child: BuildItem(
-                                              imageUrl: e.imageProduct.value,
-                                              nameProduct: e.nameProduct.value,
-                                              categoryProduct:
-                                                  e.categoryProduct.value,
-                                              price: e.priceProduct.value,
+                                              imageUrl: e.image.value,
+                                              nameProduct: e.name.value,
+                                              categoryProduct: e.category.value,
+                                              price: e.price.value,
                                               product: e,
                                             )))
                                         .toList(),
@@ -87,9 +83,8 @@ class Categories extends StatelessWidget {
                                     alignment: WrapAlignment.center,
                                     children: Product.products
                                         .where((e) =>
-                                            e.categoryProduct.value ==
-                                                category.nameCategory &&
-                                            e.nameProduct.value
+                                            e.category.value == category.name &&
+                                            e.name.value
                                                     .contains(Product.search) ==
                                                 true)
                                         .map((e) => GestureDetector(
@@ -99,11 +94,10 @@ class Categories extends StatelessWidget {
                                               ));
                                             },
                                             child: BuildItem(
-                                              imageUrl: e.imageProduct.value,
-                                              nameProduct: e.nameProduct.value,
-                                              categoryProduct:
-                                                  e.categoryProduct.value,
-                                              price: e.priceProduct.value,
+                                              imageUrl: e.image.value,
+                                              nameProduct: e.name.value,
+                                              categoryProduct: e.category.value,
+                                              price: e.price.value,
                                               product: e,
                                             )))
                                         .toList(),

@@ -60,7 +60,7 @@ class Favorites extends StatelessWidget {
                                                     e.nameProduct.value,
                                                 categoryProduct:
                                                     e.categoryProduct.value,
-                                                price: e.priceProduct.value,
+                                                price:e.priceProduct.value,
                                                 product: e.product,
                                               )))
                                           .toList(),

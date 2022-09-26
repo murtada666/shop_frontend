@@ -40,7 +40,7 @@ class Details extends StatelessWidget {
                           ),
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(product.imageProduct.value))),
+                              image: NetworkImage(product.image.value))),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 25),
@@ -52,10 +52,10 @@ class Details extends StatelessWidget {
                                 Get.back();
                                 (product.isCart.value == true)
                                     ? CartModule.update(
-                                        product.nameProduct.value,
-                                        product.imageProduct.value,
-                                        product.weightProduct.value,
-                                        product.priceProduct.value,
+                                        product.name.value,
+                                        product.image.value,
+                                        product.weight.value,
+                                        product.price.value.toString(),
                                       )
                                     : null;
                               },
@@ -88,14 +88,14 @@ class Details extends StatelessWidget {
                                   product.isFavorite.value = false;
                                   FavoriteModule.favorites.removeWhere((e) =>
                                       e.nameProduct.value ==
-                                      product.nameProduct.value);
+                                      product.name.value);
                                 } else {
                                   product.isFavoriteChanged();
                                   FavoriteModule.add(
-                                    product.nameProduct.value,
-                                    product.imageProduct.value,
-                                    product.categoryProduct.value,
-                                    product.priceProduct.value,
+                                    product.name.value,
+                                    product.image.value,
+                                    product.category.value,
+                                    product.price.value,
                                   );
                                 }
                               },
@@ -125,7 +125,7 @@ class Details extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TitleName(title: product.nameProduct.value),
+                            TitleName(title: product.name.value),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -137,7 +137,7 @@ class Details extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(16)),
                                     child: Text(
-                                      '${product.priceProduct.value} د.ع',
+                                      '${product.price.value} د.ع',
                                       style: const TextStyle(
                                           fontSize: 16,
                                           color: Colors.white,
@@ -147,7 +147,7 @@ class Details extends StatelessWidget {
                                   children: [
                                     FloatingActionButton(
                                         onPressed: () {
-                                          product.weightProduct.value += 0.5;
+                                          product.weight.value += 0.5;
                                         },
                                         heroTag: 'btn1',
                                         backgroundColor: greenColor,
@@ -156,16 +156,14 @@ class Details extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 5),
-                                      child: Text(
-                                          '${product.weightProduct.value}   كغم'),
+                                      child:
+                                          Text('${product.weight.value}   كغم'),
                                     ),
                                     FloatingActionButton(
                                         onPressed: () {
-                                          (product.weightProduct.value <= 0.5)
-                                              ? product.weightProduct.value =
-                                                  0.5
-                                              : product.weightProduct.value -=
-                                                  0.5;
+                                          (product.weight.value <= 0.5)
+                                              ? product.weight.value = 0.5
+                                              : product.weight.value -= 0.5;
                                         },
                                         heroTag: 'btn2',
                                         backgroundColor: Colors.grey,
@@ -184,7 +182,7 @@ class Details extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Text(
-                                  product.descriptionProduct.value,
+                                  product.description.value,
                                   style: const TextStyle(
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.bold,
@@ -201,8 +199,8 @@ class Details extends StatelessWidget {
                                     scrollDirection: Axis.horizontal,
                                     children: Product.products
                                         .where((e) =>
-                                            e.categoryProduct.value ==
-                                            product.categoryProduct.value)
+                                            e.category.value ==
+                                            product.category.value)
                                         .map(
                                           (e) => GestureDetector(
                                             onTap: () {
@@ -212,11 +210,10 @@ class Details extends StatelessWidget {
                                               e.isEdit.value = false;
                                             },
                                             child: BuildItem(
-                                              imageUrl: e.imageProduct.value,
-                                              nameProduct: e.nameProduct.value,
-                                              categoryProduct:
-                                                  e.categoryProduct.value,
-                                              price: e.priceProduct.value,
+                                              imageUrl: e.image.value,
+                                              nameProduct: e.name.value,
+                                              categoryProduct: e.category.value,
+                                              price: e.price.value,
                                               product: e,
                                             ),
                                           ),
@@ -244,15 +241,14 @@ class Details extends StatelessWidget {
                               if (product.isCart.value == true) {
                                 product.isCart.value = false;
                                 CartModule.products.removeWhere((e) =>
-                                    e.nameProduct.value ==
-                                    product.nameProduct.value);
+                                    e.nameProduct.value == product.name.value);
                               } else {
                                 product.isCartChanged();
                                 CartModule.add(
-                                  product.nameProduct.value,
-                                  product.imageProduct.value,
-                                  product.weightProduct.value,
-                                  product.priceProduct.value,
+                                  product.name.value,
+                                  product.image.value,
+                                  product.weight.value,
+                                  product.price.value.toString(),
                                 );
                               }
                             },
