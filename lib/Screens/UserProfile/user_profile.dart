@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_and_shop/Screens/Locations/locations.dart';
+import 'package:stop_and_shop/Screens/Mylocation/locations.dart';
 import 'package:stop_and_shop/Services/auth_service/auth.dart';
 import 'package:stop_and_shop/style/colors.dart';
 import '../../Services/local_database/shared_preferences.dart';
@@ -72,18 +73,18 @@ class _UserProfileState extends State<UserProfile> {
                         const Spacer(),
                         Column(
                           children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(35),
-                              ),
-                              child: const Icon(
-                                Icons.person,
-                                size: 35,
-                              ),
-                            ),
+                            // Container(
+                            //   width: 50,
+                            //   height: 50,
+                            //   decoration: BoxDecoration(
+                            //     color: Colors.grey,
+                            //     borderRadius: BorderRadius.circular(35),
+                            //   ),
+                            //   child: const Icon(
+                            //     Icons.person,
+                            //     size: 35,
+                            //   ),
+                            // ),
                             SizedBox(
                               height: 40,
                               child: TextButton(
@@ -194,7 +195,7 @@ class _UserProfileState extends State<UserProfile> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.to(Locations());
+                              Get.to(MyLocations());
                             },
                             child: Row(
                               children: const [

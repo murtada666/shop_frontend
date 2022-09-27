@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stop_and_shop/Screens/FirstScreen/first_screen.dart';
 import 'package:stop_and_shop/Screens/HomeScreen/home_screen.dart';
+import 'package:stop_and_shop/Screens/LoadingScreen/loading_screen.dart';
 import 'dart:ui' as ui;
 import 'package:stop_and_shop/style/colors.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -25,7 +26,7 @@ class SplashScreen extends StatelessWidget {
             ),
             AnimatedSplashScreen(
                 splash: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: Image.asset(
                     'assets/images/img_logo.png',
                     width: 220,
@@ -33,7 +34,7 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
                 backgroundColor: const Color.fromRGBO(0, 128, 0, 0),
-                nextScreen: const FirstScreen(),
+                nextScreen: const Loading(),
                 duration: 900,
                 splashIconSize: 250,
                 splashTransition:  null,

@@ -4,6 +4,8 @@ import 'package:stop_and_shop/Screens/CheckOutScreen/check_out.dart';
 import 'package:stop_and_shop/Screens/CheckScreens/login.dart';
 import 'package:stop_and_shop/Screens/CheckScreens/register.dart';
 import 'package:stop_and_shop/modules/module_cart.dart';
+import 'package:stop_and_shop/modules/module_favorite.dart';
+import 'package:stop_and_shop/modules/module_product.dart';
 import 'package:stop_and_shop/style/colors.dart';
 import '../../shared/components/components.dart';
 import '../HomeScreen/search.dart';
@@ -23,9 +25,10 @@ class Cart extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           title: TitleName(title: 'سلتي'),
-          actions: (Database.prefs.getString('phoneNumber')!.isNotEmpty)
+          titleSpacing: 20,
+          actions: (Database.prefs.getString('phoneNumber')!.isNotEmpty )
               ? [
-                  Padding(
+                  Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -34,7 +37,10 @@ class Cart extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16)),
                       child: TextButton(
                         onPressed: () {
+                          if( !CartModule.products.isEmpty){
+
                           Get.to(const CheckOut());
+                          }
                         },
                         child: const Text(
                           'الدفع',

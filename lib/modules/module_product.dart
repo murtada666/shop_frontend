@@ -46,7 +46,79 @@ class Product {
     Product(
       nameProduct: 'موز',
       imageProduct:
-          'https://w7.pngwing.com/pngs/332/204/png-transparent-banana-banana-natural-foods-food-fitness-thumbnail.png',
+          'assets/images/banana_item.png',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'بتيتة',
+      imageProduct:
+          'assets/images/Patato_item.png',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'خضروات',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'تفاح',
+      imageProduct:
+          'assets/images/Apple_item.jpg',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'فراولة',
+      imageProduct:
+          'assets/images/strawberry_item.jfif',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'باذينجان',
+      imageProduct:
+          'assets/images/eggplant_item.png',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'خضروات',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'عنب',
+      imageProduct:
+          'assets/images/grape_item.jfif',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'رمان',
+      imageProduct:
+          'assets/images/Pomegranate _item.jfif',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'طماطم',
+      imageProduct:
+          'assets/images/tomato_item.jfif',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'خضروات',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'بطيخ',
+      imageProduct:
+          'assets/images/watermelon_item.jfif',
+      descriptionProduct: 'descriptionProduct',
+      categoryProduct: 'فواكه',
+      priceProduct: '2000',
+    ),
+    Product(
+      nameProduct: 'خوخ',
+      imageProduct:
+          'assets/images/Peach_item.jfif',
       descriptionProduct: 'descriptionProduct',
       categoryProduct: 'فواكه',
       priceProduct: '2000',
@@ -54,31 +126,7 @@ class Product {
     Product(
       nameProduct: 'برتقال',
       imageProduct:
-          'https://w7.pngwing.com/pngs/332/204/png-transparent-banana-banana-natural-foods-food-fitness-thumbnail.png',
-      descriptionProduct: 'descriptionProduct',
-      categoryProduct: 'فواكه',
-      priceProduct: '2000',
-    ),
-    Product(
-      nameProduct: 'موز',
-      imageProduct:
-          'https://w7.pngwing.com/pngs/332/204/png-transparent-banana-banana-natural-foods-food-fitness-thumbnail.png',
-      descriptionProduct: 'descriptionProduct',
-      categoryProduct: 'فواكه',
-      priceProduct: '2000',
-    ),
-    Product(
-      nameProduct: 'موز',
-      imageProduct:
-          'https://w7.pngwing.com/pngs/332/204/png-transparent-banana-banana-natural-foods-food-fitness-thumbnail.png',
-      descriptionProduct: 'descriptionProduct',
-      categoryProduct: 'فواكه',
-      priceProduct: '2000',
-    ),
-    Product(
-      nameProduct: 'موز',
-      imageProduct:
-          'https://w7.pngwing.com/pngs/332/204/png-transparent-banana-banana-natural-foods-food-fitness-thumbnail.png',
+          'assets/images/Orange_item.jfif ',
       descriptionProduct: 'descriptionProduct',
       categoryProduct: 'فواكه',
       priceProduct: '2000',

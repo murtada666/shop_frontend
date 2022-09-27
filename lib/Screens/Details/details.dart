@@ -39,7 +39,7 @@ class Details extends StatelessWidget {
                           ),
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(product.imageProduct.value))),
+                              image: AssetImage(product.imageProduct.value))),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 25),
@@ -120,12 +120,20 @@ class Details extends StatelessWidget {
                     children: [
                       Container(
                         height: 500,
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        // padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TitleName(title: product.nameProduct.value),
-                            Row(
+                            Container(
+                              
+                                  margin: EdgeInsets.symmetric(horizontal:10),
+                              child: TitleName(title: product.nameProduct.value),
+                            
+                            ),
+                            Container(
+                              
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              child:Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
@@ -174,7 +182,13 @@ class Details extends StatelessWidget {
                                 )
                               ],
                             ),
-                            TitleName(title: 'الوصف'),
+                            
+                            ),
+                            Container(
+                              
+                                  margin: EdgeInsets.symmetric(horizontal:10),
+                              child: TitleName(title: 'الوصف'),
+                            ),
                             SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: Container(
@@ -191,7 +205,11 @@ class Details extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            TitleName(title: 'منتجات مماثلة'),
+                            Container(
+                              
+                                  margin: EdgeInsets.symmetric(horizontal:10),
+                              child: TitleName(title: 'منتجات مماثلة'),
+                            ),
                             SizedBox(
                               height: 195,
                               child: Obx(
@@ -228,7 +246,10 @@ class Details extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Align(
+                      Container(
+                        
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           width: double.infinity,
@@ -273,6 +294,8 @@ class Details extends StatelessWidget {
                           ),
                         ),
                       ),
+                    
+                      )
                     ],
                   ),
                 )
