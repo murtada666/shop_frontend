@@ -50,14 +50,18 @@ class _FirstScreenState extends State<FirstScreen> {
                     color: greenColor,
                     child: TextButton(
                       onPressed: () {
-                        Get.to(Login());
+                         Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Login();
+                        }));
                       },
                       child: Text(
                         'تسجيل الدخول',
                         style: TextStyle(
-                          color: blackColor,
+                          color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          
                         ),
                       ),
                     ),
@@ -69,7 +73,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     color: const Color(0xffF1F1F1),
                     child: TextButton(
                       onPressed: () {
-                        Get.to(Signup());
+                        // Get.to(Signup());
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Signup();
+                        }));
                       },
                       child: Text(
                         'تسجيل',
@@ -86,7 +94,7 @@ class _FirstScreenState extends State<FirstScreen> {
                   ),
                   const Text(
                       ' او سجل دخول باستخدام '),
-                  const Divider(color: Colors.black,),
+                  // const Divider(color: Colors.black,),
                   const SizedBox(
                     height: 30,
                   ),

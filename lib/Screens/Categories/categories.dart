@@ -27,6 +27,7 @@ class Categories extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
           ),
+          titleSpacing: 10,
           leading: IconButton(
             onPressed: () {
               Get.back();
@@ -39,28 +40,34 @@ class Categories extends StatelessWidget {
         ),
         body: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(10),
+          // padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(category.desc),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
               Search(),
               const SizedBox(
                 height: 15,
               ),
               // ------------------------------- List the product ---------------------------------
               Expanded(
-                child: Obx(() {
-                  return (Product.products
-                              .where((e) =>
-                                  e.categoryProduct.value ==
-                                  category.nameCategory)
-                              .isEmpty ==
-                          false)
-                      ? ListView(
+               
+                child:  Container(
+                  width: double.infinity,
+                  child: Obx(() {
+                  return (Product.products.where((e) =>e.categoryProduct.value ==category.nameCategory).isEmpty ==false)
+                      ? GridView.count(
+                        crossAxisCount: 2,
                           children: (Product.isSearch.value == false)
                               ? [
-                                  Wrap(
-                                    alignment: WrapAlignment.center,
+                                GridView.count(
+                                    crossAxisCount: 2,
                                     children: Product.products
                                         .where((e) =>
                                             e.categoryProduct.value ==
@@ -82,9 +89,8 @@ class Categories extends StatelessWidget {
                                         .toList(),
                                   )
                                 ]
-                              : [
-                                  Wrap(
-                                    alignment: WrapAlignment.center,
+                              : [GridView.count(
+                                    crossAxisCount:2,
                                     children: Product.products
                                         .where((e) =>
                                             e.categoryProduct.value ==
@@ -110,6 +116,7 @@ class Categories extends StatelessWidget {
                                   )
                                 ],
                         )
+                      
                       : Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -128,6 +135,9 @@ class Categories extends StatelessWidget {
                           ),
                         );
                 }),
+              
+                )
+                
               ),
             ],
           ),

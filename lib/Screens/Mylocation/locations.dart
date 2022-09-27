@@ -12,14 +12,10 @@ import 'package:stop_and_shop/style/colors.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
-class Locations extends StatefulWidget {
-  const Locations({Key? key}) : super(key: key);
 
-  @override
-  State<Locations> createState() => _LocationsState();
-}
+class MyLocations extends StatelessWidget {
+  MyLocations({Key? key}) : super(key: key);
 
-class _LocationsState extends State<Locations> {
   var cl;
   Future<Position> getLatandlong() async {
     return await Geolocator.getCurrentPosition().then((value) => value);
@@ -30,7 +26,6 @@ class _LocationsState extends State<Locations> {
   final TextEditingController nametown = TextEditingController();
   final TextEditingController namepoint = TextEditingController();
   final TextEditingController location = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -73,18 +68,14 @@ class _LocationsState extends State<Locations> {
               Expanded(child: Obx(() {
                 return ListView(
                   children: LocationModule.locations
-                      .map((e) => GestureDetector(
-                            onTap: () {
-                              e.valid = true;
-                              Get.to(CheckOut());
-                            },
-                            child: BuildSingleLocations(
-                              nameLocation: e.nameLocation.value,
-                              namecity: e.namecity.value,
-                              nametown: e.nametown.value,
-                              location: e.location.value,
-                            ),
-                          ))
+                      .map((e) => BuildSingleLocations(
+                          nameLocation: e.nameLocation.value,
+                          namecity: e.namecity.value,
+                          nametown: e.nametown.value,
+                          namepoint:e.namepoint.value,
+                          location: e.location.value,
+                        ),
+                      )
                       .toList(),
                 );
               })),
@@ -99,7 +90,7 @@ class _LocationsState extends State<Locations> {
                   const SizedBox(
                     height: 50,
                   ),
-                  Container(
+                   Container(
                     padding: const EdgeInsets.all(5),
                     width: 200,
                     height: 50,
@@ -172,7 +163,8 @@ class _LocationsState extends State<Locations> {
                                                 LocationPermission.always) {
                                               LocationModule.add(
                                                   nameLocation.text,
-                                                  placemarks[0].administrativeArea!,
+                                                  placemarks[0]
+                                                      .administrativeArea!,
                                                   placemarks[0].locality!,
                                                   placemarks[0].street!,
                                                   location.text,
@@ -185,7 +177,8 @@ class _LocationsState extends State<Locations> {
                                                 LocationPermission.whileInUse) {
                                               LocationModule.add(
                                                   nameLocation.text,
-                                                  placemarks[0].administrativeArea! ,
+                                                  placemarks[0]
+                                                      .administrativeArea!,
                                                   placemarks[0].locality!,
                                                   placemarks[0].street!,
                                                   location.text,
@@ -241,10 +234,10 @@ class _LocationsState extends State<Locations> {
                         )),
                   ),
                   
-                  
-                  
-                  SizedBox(
-                    height: 25,
+
+
+                  const SizedBox(
+                    height: 50,
                   ),
                   Container(
                     padding: const EdgeInsets.all(5),
@@ -290,27 +283,21 @@ class _LocationsState extends State<Locations> {
                                       ContainerDesgin(
                                         color: Colors.white,
                                         child: MyTextField(
-                                            label: 'اقرب نقطة دالة ',
-                                            controller: namepoint),
-                                      ),
-                                      ContainerDesgin(
-                                        color: Colors.white,
-                                        child: MyTextField(
                                             label: 'رقم الهاتف',
                                             controller: location),
                                       ),
                                       TextButton(
                                         onPressed: () {
                                           LocationModule.add(
-                                            nameLocation.text,
-                                            namecity.text,
-                                            nametown.text,
-                                            namepoint.text,
-                                            location.text,
-                                            false,
-                                            0.0,
-                                            0.0,
-                                          );
+                                              nameLocation.text,
+                                              namecity.text,
+                                              nametown.text,
+                                              namepoint.text,
+                                              location.text,
+                                              false ,
+                                              0.0,
+                                              0.0
+                                              );
                                           Get.back();
                                         },
                                         child: Container(

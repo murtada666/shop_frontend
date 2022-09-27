@@ -12,6 +12,7 @@ class BuildSingleLocations extends StatelessWidget {
       required this.nameLocation,
       required this.namecity,
       required this.nametown,
+      required this.namepoint,
       required this.location,
       })
       : super(key: key);
@@ -19,6 +20,7 @@ class BuildSingleLocations extends StatelessWidget {
   final String nameLocation;
   final String namecity;
   final String nametown;
+  final String namepoint;
   final String location;
   // final bool valid; 
 

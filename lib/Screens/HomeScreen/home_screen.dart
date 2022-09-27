@@ -24,35 +24,43 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           title: const Text(
             "STOP & SHOP STORE",
+
             style: TextStyle(
                 color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10),
+        body: Container(
+          // padding: const EdgeInsets.all(5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              Container(margin:  EdgeInsets.symmetric(horizontal: 10 ),
+                child: Text(
                 'مرحبا ${Database.prefs.getString('fullName')}',
                 style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 25),
               ),
-              const Text(
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                child: const Text(
                 'ابحث عن الطعام الطازج وقتما تشاء',
                 style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 19),
               ),
+              ),
               // --------------------------box search----------------------------
               Search(),
-
               const SizedBox(
                 height: 20,
               ),
+
+
               Expanded(
                 child: Obx(() {
                   return ListView(
@@ -62,8 +70,11 @@ class HomePage extends StatelessWidget {
                         ? [
                             const DeliveryImage(),
                             // -------------------------first section--------------------------
-                            Row(
+                            Container(
+                              margin:EdgeInsets.symmetric(horizontal: 10)  ,
+                              child:Row(
                               children: [TitleName(title: 'الفئات')],
+                            ),
                             ),
                             SizedBox(
                               height: 110,
@@ -89,8 +100,11 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
 
-                            Row(
-                              children: [TitleName(title: 'افضل المنتجات')],
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                children: [TitleName(title: 'افضل المنتجات')],
+                              ),
                             ),
                             SizedBox(
                               height: 195,
@@ -119,8 +133,11 @@ class HomePage extends StatelessWidget {
                               }),
                             ),
 
-                            Row(
+                            Container(
+                              margin:EdgeInsets.symmetric(horizontal: 10)  ,
+                              child:Row(
                               children: [TitleName(title: 'منتجات عليها خصم')],
+                            ),
                             ),
                             SizedBox(
                               height: 195,

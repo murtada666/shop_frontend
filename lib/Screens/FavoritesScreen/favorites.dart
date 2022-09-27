@@ -32,45 +32,46 @@ class Favorites extends StatelessWidget {
                 return (FavoriteModule.favorites.isEmpty == false)
                     ? Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(10),
+                        // padding: const EdgeInsets.all(10),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            // ------------------------------- List the product ---------------------------------
-                            Expanded(
-                              child: Obx(() {
-                                return ListView(
-                                  children: [
-                                    Wrap(
-                                      alignment: WrapAlignment.center,
-                                      children: FavoriteModule.favorites
-                                          .map((e) => GestureDetector(
-                                              onTap: () {
-                                                Get.to(Details(
-                                                  product: e.product,
-                                                ));
-                                                e.product.isEdit.value = false;
-                                              },
-                                              child: BuildItem(
-                                                imageUrl: e.imageProduct.value,
-                                                nameProduct:
-                                                    e.nameProduct.value,
-                                                categoryProduct:
-                                                    e.categoryProduct.value,
-                                                price: e.priceProduct.value,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              // ------------------------------- List the product ---------------------------------
+                              
+                              Expanded(
+                                child: Container(
+                                width: double.infinity,
+                                child: Obx(() {
+                                  return
+                                      GridView.count(
+                                    crossAxisCount: 2,
+                                    children: FavoriteModule.favorites
+                                        .map((e) => GestureDetector(
+                                            onTap: () {
+                                              Get.to(Details(
                                                 product: e.product,
-                                              )))
-                                          .toList(),
-                                    )
-                                  ],
-                                );
-                              }),
-                            )
-                          ],
-                        ),
+                                              ));
+                                              e.product.isEdit.value = false;
+                                            },
+                                            child: BuildItem(
+                                              imageUrl: e.imageProduct.value,
+                                              nameProduct: e.nameProduct.value,
+                                              categoryProduct:
+                                                  e.categoryProduct.value,
+                                              price: e.priceProduct.value,
+                                              product: e.product,
+                                            )))
+                                        .toList(),
+                                  );
+                                }),
+                              )
+                            
+                              )
+                            
+                            ]),
                       )
                     : Center(
                         child: Column(
