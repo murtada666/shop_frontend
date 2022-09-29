@@ -37,7 +37,7 @@ class Search extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.search,
-                color: Colors.black,
+                color: Colors.white,
               )),
           hintText: 'ابحث عن منتج',
           border: InputBorder.none,
