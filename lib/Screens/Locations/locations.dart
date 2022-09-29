@@ -215,7 +215,7 @@ class _LocationsState extends State<Locations> {
                                                     color: Colors.white),
                                               ),
                                               Icon(
-                                                Icons.save,
+                                                Icons.location_on,
                                                 color: Colors.white,
                                               ),
                                             ],
@@ -278,13 +278,13 @@ class _LocationsState extends State<Locations> {
                                       ContainerDesgin(
                                         color: Colors.white,
                                         child: MyTextField(
-                                            label: "اسم المدينة ",
+                                            label: "المدينة ",
                                             controller: namecity),
                                       ),
                                       ContainerDesgin(
                                         color: Colors.white,
                                         child: MyTextField(
-                                            label: 'اسم البلدة ',
+                                            label: 'البلدة',
                                             controller: nametown),
                                       ),
                                       ContainerDesgin(

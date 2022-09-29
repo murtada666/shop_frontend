@@ -19,7 +19,7 @@ class DeliveryImage extends StatelessWidget {
       child: Row(
         children: [
          Expanded(
-          flex: 1,
+          flex: 2,
           child:  Container(
               width: 180,
               margin: const EdgeInsets.only(left: 15),
@@ -31,7 +31,7 @@ class DeliveryImage extends StatelessWidget {
 
           ),
           Expanded(
-            flex: 2,
+            flex:3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [

@@ -208,7 +208,7 @@ class MyLocations extends StatelessWidget {
                                                     color: Colors.white),
                                               ),
                                               Icon(
-                                                Icons.save,
+                                                Icons.location_on,
                                                 color: Colors.white,
                                               ),
                                             ],
@@ -271,13 +271,13 @@ class MyLocations extends StatelessWidget {
                                       ContainerDesgin(
                                         color: Colors.white,
                                         child: MyTextField(
-                                            label: "اسم المدينة ",
+                                            label: "المدينة ",
                                             controller: namecity),
                                       ),
                                       ContainerDesgin(
                                         color: Colors.white,
                                         child: MyTextField(
-                                            label: 'اسم البلدة ',
+                                            label: 'البلدة ',
                                             controller: nametown),
                                       ),
                                       ContainerDesgin(
